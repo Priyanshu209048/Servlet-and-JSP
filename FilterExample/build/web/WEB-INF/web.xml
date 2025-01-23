@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>com.filter.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.filter.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!--flter-->
+    <filter>
+        <filter-name>filter1</filter-name>
+        <filter-class>com.filter.MyFilter</filter-class>
+    </filter>
+    <!--flter mapping-->
+    <filter-mapping>
+        <filter-name>filter1</filter-name>
+        <!--We gave the url pattern of profile servlet because we want to use it before the profile servlet-->
+        <!--And run it on every servlet then we simply write /* in url pattern-->
+        <url-pattern>/profileServlet</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>filter1</filter-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </filter-mapping>
+</web-app>
